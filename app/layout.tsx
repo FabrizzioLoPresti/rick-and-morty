@@ -1,13 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { store } from "@/store/store";
-import { Provider } from "react-redux";
+import { StoreProvider } from "@/store/provider";
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "React and Morty App",
+  title: "Rick and Morty App",
   description: "React and Morty App using Next.js, Tailwind CSS, Axios, Redux-Toolkit and Framer-Motion",
 };
 
@@ -17,10 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Provider store={store}>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <StoreProvider>
+            <Header />
+            {children}
+            <Footer />
+          </StoreProvider>
+        </body>
       </html>
-    </Provider>
   );
 }

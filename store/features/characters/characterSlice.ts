@@ -18,7 +18,7 @@ const initialState: CharacterState = {
 }
 
 const characterSlice = createSlice({
-  name: 'character',
+  name: 'characters',
   initialState,
   reducers: {
     getCharactersStart(state) {
