@@ -7,7 +7,9 @@ const Header = (props: Props) => {
   return (
     <header className="sticky top-0 z-10 bg-gray-200/20 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto flex flex-row justify-between items-center py-5">
-        <Image src="/Logo.png" alt="logo" width="200" height="200" />
+        <Link href="/" passHref>
+          <Image src="/Logo.png" alt="logo" width="200" height="200" />
+        </Link>
         <nav className="flex gap-5">
           <Link
             href="/"
