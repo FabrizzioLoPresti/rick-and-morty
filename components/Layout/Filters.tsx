@@ -25,7 +25,7 @@ const Filters = (props: Props) => {
     <div className='px-2 py-4 rounded-md bg-gray-300 flex flex-col md:flex-row md:items-center md:justify-between text-gray-800'>
       <div className='space-x-3'>
         <label htmlFor="status">Status</label>
-        <select name="status" id="status" onChange={handleFilterChange}>
+        <select name="status" id="status" onChange={handleFilterChange} value={status ? status : 'all'}>
           <option value="all">All</option>
           <option value="alive">Alive</option>
           <option value="dead">Dead</option>
@@ -34,7 +34,7 @@ const Filters = (props: Props) => {
       </div>
       <div className='space-x-3'>
         <label htmlFor="gender">Gender</label>
-        <select name="gender" id="gender" onChange={handleFilterChange}>
+        <select name="gender" id="gender" onChange={handleFilterChange} value={gender ? gender : 'all'}>
           <option value="all">All</option>
           <option value="female">Female</option>
           <option value="male">Male</option>
