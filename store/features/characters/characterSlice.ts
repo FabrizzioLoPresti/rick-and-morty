@@ -1,3 +1,4 @@
+import { RootState } from '@/store/store'
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Character } from '@/interfaces/Character'
@@ -10,6 +11,10 @@ interface CharacterState {
   pages: number | null
   loading: boolean
   error: string | null
+  filters: {
+    status: string | null
+    gender: string | null
+  }
 }
 
 const initialState: CharacterState = {
@@ -19,6 +24,10 @@ const initialState: CharacterState = {
   pages: null,
   loading: false,
   error: null,
+  filters: {
+    status: null,
+    gender: null
+  }
 }
 
 const characterSlice = createSlice({
@@ -56,7 +65,10 @@ const characterSlice = createSlice({
     getCharacterFailure(state, action: PayloadAction<string>) {
       state.loading = false
       state.error = action.payload
-    }
+    },
+    setFilters(state, action: PayloadAction<{ status: string | null; gender: string | null }>) {
+      state.filters = action.payload
+    },
   }
 })
 
@@ -68,15 +80,17 @@ export const {
   setPages,
   getCharacterStart,
   getCharacterSuccess,
-  getCharacterFailure
+  getCharacterFailure,
+  setFilters
 } = characterSlice.actions
 
 export default characterSlice.reducer
 
-export const fetchCharacters = (page: number) => async (dispatch: any) => {
+export const fetchCharacters = (page: number) => async (dispatch: any, getState: () => RootState) => {
+  const { filters } = getState().characters
   try {
     dispatch(getCharactersStart())
-    const { results, info } = await getCharacters(page)
+    const { results, info } = await getCharacters(page, filters)
     dispatch(getCharactersSuccess(results))
     dispatch(setPages(info.pages))
   } catch (err: any) {

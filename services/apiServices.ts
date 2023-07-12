@@ -1,3 +1,4 @@
+import { RootState } from '@/store/store'
 import axios from '@/libs/axios'
 import { Character } from '@/interfaces/Character'
 
@@ -11,8 +12,15 @@ type Respomse = {
   results: Character[]
 }
 
-export const getCharacters = async (page: number): Promise<Respomse> => {
-  const { data } = await axios.get(`/character?page=${page}`)
+export const getCharacters = async (page: number, filters: RootState['characters']['filters']): Promise<Respomse> => {
+  const { gender, status } = filters
+  const { data } = await axios.get('/character', {
+    params: {
+      page,
+      ...(gender && { gender }),
+      ...(status && { status }),
+    }
+  })
   return data
 }
 
