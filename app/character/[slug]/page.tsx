@@ -60,27 +60,22 @@ const CharacterPage = ({ params }: Props) => {
             className="h-screen flex justify-center items-center"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100}}
+            exit={{ opacity: 0, x: 100 }}
           >
-            <Image
-              src="/giphy.gif"
-              alt="loading"
-              width="500"
-              height="500"
-            />
+            <Image src="/giphy.gif" alt="loading" width="500" height="500" />
           </motion.div>
         )}
-        </AnimatePresence>
-        <AnimatePresence mode="wait">
+      </AnimatePresence>
+      <AnimatePresence mode="wait">
         {!loading && character && (
-          <motion.div 
+          <motion.div
             key={2}
             className="h-screen md:grid md:grid-cols-5 md:gap-5 justify-center items-center"
             variants={characterPageVariants}
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={transition}  
+            transition={transition}
           >
             <div className="col-span-2 flex flex-col justify-center items-center gap-5">
               <Image
