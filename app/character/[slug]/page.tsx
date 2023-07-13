@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 import { useAppSelector, useAppDispatch } from "@/hooks/useReduxStore";
 import { fetchCharacter } from "@/store/features/characters/characterSlice";
 
@@ -15,28 +15,28 @@ type Props = {
 const characterPageVariants = {
   initial: {
     opacity: 0,
-    x: -50
+    x: -50,
   },
   animate: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.5
-    }
+      duration: 0.5,
+    },
   },
   exit: {
     opacity: 0,
     x: -50,
     transition: {
-      duration: 0.5
-    }
-  }
-}
+      duration: 0.5,
+    },
+  },
+};
 
 const transition = {
   duration: 0.5,
-  ease: "easeInOut"
-}
+  ease: "easeInOut",
+};
 
 const CharacterPage = ({ params }: Props) => {
   const { character, loading, error } = useAppSelector(
@@ -49,7 +49,7 @@ const CharacterPage = ({ params }: Props) => {
   }, [dispatch, params]);
 
   return (
-    <motion.div 
+    <motion.div
       className="max-w-7xl mx-auto overflow-x-hidden px-5 md:px-0"
       variants={characterPageVariants}
       initial="initial"
@@ -57,8 +57,9 @@ const CharacterPage = ({ params }: Props) => {
       exit="exit"
       transition={transition}
     >
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {/* {loading && <p>Loading...</p>}
+      {!loading && !character && <p>Character not found</p>}
+      {error && <p>{error}</p>} */}
       {!loading && character && (
         <div className="h-screen md:grid md:grid-cols-5 md:gap-5 justify-center items-center">
           <div className="col-span-2 flex flex-col justify-center items-center gap-5">
