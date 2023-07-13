@@ -22,7 +22,7 @@ const transition = {
 const AboutPage = (props: Props) => {
   return (
     <motion.section 
-      className="h-screen max-w-7xl mx-auto"
+      className="h-screen max-w-7xl mx-auto px-5 md:px-0"
       variants={aboutPageVariants}
       initial="hidden"
       animate="visible"

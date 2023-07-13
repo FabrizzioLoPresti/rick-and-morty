@@ -31,7 +31,7 @@ const CharacterCard = ({ character }: Props) => {
   } = character;
 
   return (
-    <div className="w-full bg-gray-200 rounded-lg shadow-md hover:bg-gray-400/80 transition-colors duration-300 ease-out">
+    <div className="w-full h-[300px] bg-gray-200 rounded-lg shadow-md hover:bg-gray-400/80 transition-colors duration-300 ease-out">
       <Link href={`/character/${character.id}`} passHref className="p-5 h-full w-full flex flex-col justify-center items-center">
         <Image
           src={image}

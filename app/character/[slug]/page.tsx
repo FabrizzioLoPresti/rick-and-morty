@@ -50,7 +50,7 @@ const CharacterPage = ({ params }: Props) => {
 
   return (
     <motion.div 
-      className="max-w-7xl mx-auto overflow-x-hidden"
+      className="max-w-7xl mx-auto overflow-x-hidden px-5 md:px-0"
       variants={characterPageVariants}
       initial="initial"
       animate="animate"
@@ -65,9 +65,9 @@ const CharacterPage = ({ params }: Props) => {
             <Image
               src={character.image}
               alt={character.name}
-              width="400"
-              height="400"
-              className="rounded-full"
+              width="500"
+              height="500"
+              className="rounded-full w-[300px] h-[300px] md:w-[500px] md:h-[500px]"
             />
             <h3 className="text-2xl font-bold text-gray-800">
               {character.name}
