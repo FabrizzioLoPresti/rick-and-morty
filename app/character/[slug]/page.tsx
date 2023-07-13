@@ -70,6 +70,8 @@ const CharacterPage = ({ params }: Props) => {
             />
           </motion.div>
         )}
+        </AnimatePresence>
+        <AnimatePresence mode="wait">
         {!loading && character && (
           <motion.div 
             key={2}
